@@ -29,7 +29,7 @@ Expose twemproxy stats to prometheus
 
 ```
 docker pull maguec/twemproxy-exporter:latest
-docker run -i -t -p 8080:8080 maguec/twemproxy-exporter
+docker run -i -t -p 9119:9119 maguec/twemproxy-exporter
 ```
 
 ## Testing
@@ -37,7 +37,7 @@ docker run -i -t -p 8080:8080 maguec/twemproxy-exporter
 run either the docker container or the raw application binary
 
 ```
-curl http://localhost:8080/health
+curl http://localhost:9119/health
 ```
 
 ---

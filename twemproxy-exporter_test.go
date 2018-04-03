@@ -2,11 +2,11 @@ package main
 
 import (
 	"encoding/json"
-	"twemproxy-exporter/handlers/healthcheck"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"twemproxy-exporter/handlers/healthcheck"
 )
 
 func TestHealthCheck(t *testing.T) {

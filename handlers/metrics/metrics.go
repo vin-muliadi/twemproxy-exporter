@@ -47,7 +47,7 @@ func Metrics(c *gin.Context) {
 	}
 	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_uptime\n# TYPE twemproxy_uptime counter\ntwemproxy_uptime %d\n", stats.Uptime))
 	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_total_connections\n# TYPE twemproxy_total_connections counter\ntwemproxy_total_connections %d\n", stats.TotalConnections))
-	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_current_connections\n# TYPE twemproxy_current_connections gague\ntwemproxy_current_connections %d\n", stats.CurrConnections))
+	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_current_connections\n# TYPE twemproxy_current_connections gauge\ntwemproxy_current_connections %d\n", stats.CurrConnections))
 	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_client_eof\n# TYPE twemproxy_client_eof counter\ntwemproxy_client_eof %d\n", stats.Shared.ClientEOF))
 	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_client_err\n# TYPE twemproxy_client_err counter\ntwemproxy_client_err %d\n", stats.Shared.ClientErr))
 	metricString.WriteString(fmt.Sprintf("# HELP twemproxy_client_client_connections\n# TYPE twemproxy_client_client_connections counter\ntwemproxy_client_client_connections %d\n", stats.Shared.ClientConnections))

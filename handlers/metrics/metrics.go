@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net"
 	"net/http"
+	"os"
 )
 
 type TwemproxyStats struct {
@@ -38,7 +39,17 @@ func handleError(c *gin.Context, errorString string) {
 
 func Metrics(c *gin.Context) {
 	var metricString bytes.Buffer
-	conn, _ := net.Dial("tcp", "127.0.0.1:22222")
+	twemproxyServerHost := os.Getenv("TWEMPROXY_SERVER_HOST")
+	if (twemproxyServerHost == "") {
+		twemproxyServerHost = "127.0.0.1"
+	}
+
+	twemproxyServerPort := os.Getenv("TWEMPROXY_SERVER_PORT")
+	if (twemproxyServerPort == "") {
+		twemproxyServerPort = "22222"
+	}
+
+	conn, _ := net.Dial("tcp", twemproxyServerHost + ":" + twemproxyServerPort)
 	message, _ := bufio.NewReader(conn).ReadString('\n')
 	stats := TwemproxyStats{}
 	jsonErr := json.Unmarshal([]byte(message), &stats)

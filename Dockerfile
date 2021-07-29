@@ -5,7 +5,7 @@ WORKDIR /go/src/twemproxy-exporter
 RUN go get
 RUN go build && chmod +x twemproxy-exporter
 
-FROM debian:stretch-slim
+FROM busybox:stable
 ARG TWEMPROXY_TARGET_HOST
 ARG TWEMPROXY_TARGET_PORT
 ARG TWEMPROXY_EXPORTER_PORT

@@ -2,43 +2,15 @@
 
 Expose twemproxy stats to prometheus
 
-## Building
 
-### Mac/Linux
+Forked from shokunin/twemproxy-exporter
 
-0) set GOROOT environment variable
-1) Install Go and Make
-2) make
-
-### Docker
-
-0) set GOROOT environment variable
-1) Install Docker, Go and Make
-2) make docker
+# Environment Variables
+|No|Env Name|Default Value|
+|---|:---:|:---:|
+|1|`TWEMPROXY_TARGET_HOST`|`127.0.0.1`|
+|2|`TWEMPROXY_TARGET_PORT`|`2222`|
+|3|`TWEMPROXY_EXPORTER_PORT`|`9119`|
 
 
-## Running
-
-### Mac/Linux
-
-```
-./twemproxy-exporter
-```
-
-### Docker
-
-```
-docker pull maguec/twemproxy-exporter:latest
-docker run -i -t -p 9119:9119 maguec/twemproxy-exporter
-```
-
-## Testing
-
-run either the docker container or the raw application binary
-
-```
-curl http://localhost:9119/health
-```
-
----
 Copyright © 2018, Chris Mague

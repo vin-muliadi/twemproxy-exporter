@@ -39,12 +39,12 @@ func handleError(c *gin.Context, errorString string) {
 
 func Metrics(c *gin.Context) {
 	var metricString bytes.Buffer
-	twemproxyServerHost := os.Getenv("TWEMPROXY_SERVER_HOST")
+	twemproxyServerHost := os.Getenv("TWEMPROXY_TARGET_HOST")
 	if (twemproxyServerHost == "") {
 		twemproxyServerHost = "127.0.0.1"
 	}
 
-	twemproxyServerPort := os.Getenv("TWEMPROXY_SERVER_PORT")
+	twemproxyServerPort := os.Getenv("TWEMPROXY_TARGET_PORT")
 	if (twemproxyServerPort == "") {
 		twemproxyServerPort = "22222"
 	}

@@ -1,25 +1,9 @@
-#################################################
-GOOS	:= $(shell go env GOOS)
-GOARCH	:= $(shell go env GOARCH)
-GOFILES	:= $(shell ls *.go |grep -v test)
-GOBUILD	:= GOOS=$(GOOS) GOARCH=$(GOARCH) go build
-
-
-#################################################
-default:	deps test build
-docker:		deps test linuxbuild docker
-
-deps:
-	go get
+APPS=twemproxy-exporter
+APPS_VERSION=$(shell cat VERSION | tr -d '[:blank:]')
+DOCKER_APPS=$(shell which docker)
 
 build:
-	$(GOBUILD) $(GOFILES)
+	$(DOCKER_APPS) build -t $(APPS):$(APPS_VERSION) . 
 
-linuxbuild:
-	GOOS=linux GOARCH=amd64 go build $(GOFILES)
-
-docker:
-	docker build -t maguec/twemproxy-exporter .
-
-test:
-	go test -v
+run:
+	$(DOCKER_APPS) run $(APPS):$(APPS_VERSION)

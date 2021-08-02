@@ -6,6 +6,7 @@ RUN go get
 RUN go build && chmod +x twemproxy-exporter
 
 FROM busybox:stable
+ENV GIN_MODE=release
 ARG TWEMPROXY_TARGET_HOST
 ARG TWEMPROXY_TARGET_PORT
 ARG TWEMPROXY_EXPORTER_PORT
